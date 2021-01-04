@@ -16,6 +16,9 @@ export default function useCachedResources() {
         await Font.loadAsync({
           ...Ionicons.font,
           'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
+          'sf-pro-display-medium': require('../assets/fonts/sf-pro-display-medium.ttf'),
+          'sf-pro-display-regular': require('../assets/fonts/sf-pro-display-regular.ttf'),
+          'sf-pro-display-bold': require('../assets/fonts/sf-pro-display-bold.ttf'),
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
