@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Text, View } from 'react-native';
 import {
   ScrollView,
@@ -6,10 +6,10 @@ import {
   TouchableOpacity,
 } from 'react-native-gesture-handler';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Modalize } from 'react-native-modalize';
 
 import Pokeball from '../../../assets/patterns/pokeball.svg';
 import Search from '../../../assets/icons/search.svg';
-
 import Filter from '../../../assets/icons/filter.svg';
 import Generation from '../../../assets/icons/generation.svg';
 import Sort from '../../../assets/icons/sort.svg';
@@ -18,6 +18,12 @@ import styles from './styles';
 import Card from '../../components/Card';
 
 const Home: React.FC = () => {
+  const modalizeRef = useRef<Modalize>(null);
+
+  function openModal() {
+    modalizeRef.current?.open();
+  }
+
   return (
     <>
       <ScrollView style={styles.container}>
@@ -33,13 +39,22 @@ const Home: React.FC = () => {
           style={styles.header}
         >
           <View style={styles.actions}>
-            <TouchableOpacity style={{ marginLeft: 25 }}>
+            <TouchableOpacity
+              style={{ marginLeft: 25 }}
+              onPress={() => openModal()}
+            >
               <Filter />
             </TouchableOpacity>
-            <TouchableOpacity style={{ marginLeft: 25 }}>
+            <TouchableOpacity
+              style={{ marginLeft: 25 }}
+              onPress={() => openModal()}
+            >
               <Sort />
             </TouchableOpacity>
-            <TouchableOpacity style={{ marginLeft: 25 }}>
+            <TouchableOpacity
+              style={{ marginLeft: 25 }}
+              onPress={() => openModal()}
+            >
               <Generation />
             </TouchableOpacity>
           </View>
@@ -63,6 +78,7 @@ const Home: React.FC = () => {
           <Card />
         </View>
       </ScrollView>
+      <Modalize ref={modalizeRef} snapPoint={300} />
     </>
   );
 };

@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#8BBE8A',
     borderRadius: 10,
     padding: 20,
-    marginBottom: 30
+    marginBottom: 30,
   },
   pokeNum: {
     fontSize: 12,

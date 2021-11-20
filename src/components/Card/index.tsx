@@ -1,6 +1,10 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
-import { TouchableNativeFeedback } from 'react-native-gesture-handler';
+import {
+  BorderlessButton,
+  TouchableNativeFeedback,
+} from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 import Pattern from '../../../assets/patterns/6x3.svg';
 import Pokeball from '../../../assets/patterns/pokeball.svg';
@@ -10,9 +14,13 @@ import Tag from '../Tag';
 import styles from './styles';
 
 const Card: React.FC = () => {
+  const { navigate } = useNavigation();
   return (
     <View>
-      <TouchableNativeFeedback style={styles.container}>
+      <TouchableNativeFeedback
+        style={styles.container}
+        onPress={() => navigate('Profile')}
+      >
         <Text style={styles.pokeNum}>#001</Text>
         <Text style={styles.pokeName}>Bulbasaur</Text>
         <View style={styles.types}>
@@ -33,7 +41,12 @@ const Card: React.FC = () => {
           fillOpacity={0.1}
         />
       </TouchableNativeFeedback>
-      <Image source={Bulbasaur} style={styles.image} />
+      <BorderlessButton
+        style={styles.image}
+        onPress={() => navigate('Profile')}
+      >
+        <Image source={Bulbasaur} />
+      </BorderlessButton>
     </View>
   );
 };
